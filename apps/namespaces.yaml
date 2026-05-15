@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd-platform
+
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minio
+
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: stackgres
+
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: crossplane-system
+
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"

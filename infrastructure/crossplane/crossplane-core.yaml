@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane-core
+  namespace: argocd-platform
+
+  annotations:
+    argocd.argoproj.io/sync-wave: "50"
+
+spec:
+  project: platform
+
+  source:
+    repoURL: https://charts.crossplane.io/stable
+    chart: crossplane
+    targetRevision: 1.15.0
+
+    helm:
+      releaseName: crossplane
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

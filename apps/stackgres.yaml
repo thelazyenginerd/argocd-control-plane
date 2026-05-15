@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stackgres
+  namespace: argocd-platform
+
+  annotations:
+    argocd.argoproj.io/sync-wave: "40"
+
+spec:
+  project: platform
+
+  source:
+    repoURL: git@github.com:thelazyenginerd/argocd-control-plane.git
+    targetRevision: HEAD
+    path: infrastructure/stackgres
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: stackgres
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

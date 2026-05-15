@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stackgres-operator
+  namespace: argocd-platform
+
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+
+spec:
+  project: platform
+
+  source:
+    repoURL: https://stackgres.io/downloads/stackgres-k8s/stackgres
+    chart: stackgres-operator
+    targetRevision: 1.18.5
+
+    helm:
+      releaseName: stackgres-operator
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: stackgres
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
