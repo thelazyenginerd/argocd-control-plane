@@ -11,7 +11,7 @@ spec:
   project: default
 
   source:
-    repoURL: git@github.com:thelazyenginerd/argocd-control-plane.git
+    repoURL: https://github.com/thelazyenginerd/argocd-control-plane.git
     targetRevision: main
     path: apps
 
