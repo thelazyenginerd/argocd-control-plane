@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "00"
 
 spec:
-  project: bootstrap
+  project: default
 
   source:
     repoURL: git@github.com:thelazyenginerd/argocd-control-plane.git
