@@ -3,25 +3,23 @@ kind: Application
 metadata:
   name: crossplane
   namespace: argocd
-
-  annotations:
-    argocd.argoproj.io/sync-wave: "60"
-
 spec:
   project: platform
-
-  source:
-    repoURL: https://github.com/thelazyenginerd/argocd-control-plane.git
-    targetRevision: main
-    path: infrastructure/crossplane
-
+  sources:
+    - repoURL: https://charts.crossplane.io/stable
+      chart: crossplane
+      targetRevision: 1.15.0
+      helm:
+        releaseName: crossplane
+    - repoURL: https://github.com/thelazyenginerd/argocd-control-plane.git
+      targetRevision: main
+      path: infrastructure/crossplane
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
-
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-  syncOptions:
+    syncOptions:
       - SkipDryRunOnMissingResource=true
