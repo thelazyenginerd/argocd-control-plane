@@ -11,7 +11,7 @@ spec:
   project: platform
 
   source:
-    repoURL: git@github.com:thelazyenginerd/argocd-control-plane.git
+    repoURL: https://github.com/thelazyenginerd/argocd-control-plane.git
     targetRevision: main
     path: infrastructure/crossplane
 
