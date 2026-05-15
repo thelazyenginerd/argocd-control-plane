@@ -12,7 +12,7 @@ spec:
 
   source:
     repoURL: git@github.com:thelazyenginerd/argocd-control-plane.git
-    targetRevision: HEAD
+    targetRevision: main
     path: infrastructure/storage
 
   destination:
