@@ -1,3 +1,4 @@
+--- ./apps/stackgres.yaml ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -11,9 +12,16 @@ spec:
   project: platform
 
   source:
-    repoURL: https://github.com/thelazyenginerd/argocd-control-plane.git
-    targetRevision: main
-    path: infrastructure/stackgres
+    repoURL: https://stackgres.io/downloads/stackgres-k8s/stackgres/helm/
+    chart: stackgres-operator
+    targetRevision: 1.18.6
+
+    helm:
+      releaseName: stackgres-operator
+      values: |
+        stackgres:
+          config:
+            create: false
 
   destination:
     server: https://kubernetes.default.svc
