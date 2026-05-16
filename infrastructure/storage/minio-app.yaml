@@ -18,7 +18,7 @@ spec:
     helm:
       releaseName: minio
 
-      values: |
+      values:
         replicas: 1
 
         persistence:
@@ -31,7 +31,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: minio
+    namespace: storage
 
   syncPolicy:
     automated:
