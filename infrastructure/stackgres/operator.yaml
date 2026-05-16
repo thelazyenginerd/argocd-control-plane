@@ -17,7 +17,7 @@ spec:
 
     helm:
       releaseName: stackgres-operator
-      values:
+      values: |
         stackgres:
           config:
             create: false
