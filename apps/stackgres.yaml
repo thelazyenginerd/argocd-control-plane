@@ -18,9 +18,8 @@ spec:
     helm:
       releaseName: stackgres-operator
       values: |
-        stackgres:
-          config:
-            create: false
+        configuration:
+          create: false
 
   destination:
     server: https://kubernetes.default.svc
