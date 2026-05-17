@@ -36,3 +36,6 @@ ui: getpw
 		--address 0.0.0.0 \
 		svc/argocd-server \
 		--namespace $(namespace) 8080:443
+
+cat:
+	find . -path './.git' -prune -o -type f -exec sh -c 'for f do echo "--- $$f ---"; cat "$$f"; echo ""; done' _ {} +

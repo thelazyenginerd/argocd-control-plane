@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio-operator
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+spec:
+  project: platform
+  source:
+    # Using the official MinIO Operator Chart repository
+    repoURL: https://operator.min.io/
+    chart: operator
+    targetRevision: 6.0.4  # Use the latest stable version matching your environment
+
+    helm:
+      releaseName: minio-operator
+      # Add operator-specific overrides here if needed, or leave blank for defaults
+      values: |
+        operator:
+          replicaCount: 1
+
+  destination:
+    server: https://kubernetes.default.svc
+    # Targeting your desired namespace directly
+    namespace: minio
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true

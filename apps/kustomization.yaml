@@ -5,6 +5,6 @@ resources:
   - namespaces.yaml
   - projects/bootstrap.yaml
   - projects/platform.yaml
-  - storage.yaml
+  - minio.yaml
   - stackgres.yaml
   - crossplane.yaml
