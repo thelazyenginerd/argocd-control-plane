@@ -33,3 +33,16 @@ spec:
     syncOptions:
       - SkipDryRunOnMissingResource=true
       - ServerSideApply=true
+
+  ignoreDifferences:
+    # 1. Keep the webhook handler just in case
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      jsonPointers:
+        - /spec/conversion/webhook/clientConfig/caBundle
+
+    # 2. Automatically ignore EVERY empty required array in the CRD schemas
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      jqPathExpressions:
+        - .spec.versions[].schema.openAPIV3Schema | .. | .required? | select(. == [])
