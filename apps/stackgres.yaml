@@ -18,8 +18,9 @@ spec:
     helm:
       releaseName: stackgres-operator
       values: |
-        configuration:
-          create: false
+        adminui:
+          service:
+            type: LoadBalancer
 
   destination:
     server: https://kubernetes.default.svc
