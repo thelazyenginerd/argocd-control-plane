@@ -6,5 +6,5 @@ resources:
   - projects/bootstrap.yaml
   - projects/platform.yaml
   - storage.yaml
-  - stackgres.yaml
+  #- stackgres.yaml
   - crossplane.yaml
