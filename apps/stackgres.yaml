@@ -20,7 +20,7 @@ spec:
       values: |
         adminui:
           service:
-            type: LoadBalancer
+            type: NodePort
 
   destination:
     server: https://kubernetes.default.svc
@@ -32,3 +32,4 @@ spec:
       selfHeal: true
     syncOptions:
       - SkipDryRunOnMissingResource=true
+      - ServerSideApply=true
