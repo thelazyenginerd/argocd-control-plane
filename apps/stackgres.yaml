@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: stackgres
+  name: stackgres-operator
   namespace: argocd
 
   annotations:
