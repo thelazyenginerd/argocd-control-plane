@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cloudnativepg
+  name: cloudnative-pg
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "30"
@@ -11,7 +11,7 @@ spec:
     repoURL: https://cloudnative-pg.github.io/charts
     chart: cloudnative-pg
     # The helm chart version correlates directly to the operator version
-    targetRevision: 0.23.0
+    targetRevision: 0.28.2
     helm:
       releaseName: cloudnative-pg
       # You can explicitly set the image tag if you want to ensure 1.29.1 is pulled

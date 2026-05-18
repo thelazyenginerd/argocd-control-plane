@@ -7,4 +7,4 @@ resources:
   - projects/platform.yaml
   - minio.yaml
   - crossplane.yaml
-  - cloudnativepg.yaml
+  - cloudnative-pg.yaml
