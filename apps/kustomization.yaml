@@ -8,3 +8,4 @@ resources:
   - minio.yaml
   - crossplane.yaml
   - cloudnative-pg.yaml
+  - postgres-instance.yaml
