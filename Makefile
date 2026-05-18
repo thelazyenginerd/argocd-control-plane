@@ -7,7 +7,7 @@ install:
 		--namespace $(namespace) \
 		--create-namespace \
 		--set controller.resources.limits.memory=2Gi \
-		--set repoServer.resources.limits.memory=2GI \
+		--set repoServer.resources.limits.memory=2Gi \
 		--set server.service.type=NodePort \
 		--set global.logging.level=info \
 		--set controller.replicas=1 \
@@ -44,4 +44,6 @@ kind-up:
 	kind create cluster --config bootstrap/kind-config.yaml
 
 kind-down:
-	kind delete cluster
+	-kind delete cluster
+
+reset: kind-down kind-up install
