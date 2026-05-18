@@ -20,7 +20,7 @@ spec:
       values: |
         adminui:
           service:
-            type: NodePort
+            type: LoadBalancer
 
   destination:
     server: https://kubernetes.default.svc
