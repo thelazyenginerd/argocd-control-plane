@@ -6,5 +6,6 @@ resources:
   - projects/bootstrap.yaml
   - projects/platform.yaml
   - minio.yaml
+  - stackgres-crds.yaml
   - stackgres.yaml
   - crossplane.yaml

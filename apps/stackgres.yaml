@@ -17,6 +17,7 @@ spec:
 
     helm:
       releaseName: stackgres-operator
+      skipCrds: true
       values: |
         adminui:
           service:
