@@ -23,6 +23,8 @@ spec:
           operator: false
           restapi: false
           collector: false
+        jobs:
+          image: null
 
   destination:
     server: https://kubernetes.default.svc
