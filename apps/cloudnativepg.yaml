@@ -10,9 +10,14 @@ spec:
   source:
     repoURL: https://cloudnative-pg.github.io/charts
     chart: cloudnative-pg
-    targetRevision: 1.29.1
+    # The helm chart version correlates directly to the operator version
+    targetRevision: 0.23.0
     helm:
       releaseName: cloudnative-pg
+      # You can explicitly set the image tag if you want to ensure 1.29.1 is pulled
+      values: |
+        image:
+          tag: 1.29.1
   destination:
     server: https://kubernetes.default.svc
     namespace: cnpg-system
@@ -21,4 +26,5 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
+      - CreateNamespace=true
       - ServerSideApply=true
