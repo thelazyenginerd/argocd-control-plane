@@ -10,11 +10,9 @@ spec:
   source:
     repoURL: https://cloudnative-pg.github.io/charts
     chart: cloudnative-pg
-    # The helm chart version correlates directly to the operator version
     targetRevision: 0.28.2
     helm:
       releaseName: cloudnative-pg
-      # You can explicitly set the image tag if you want to ensure 1.29.1 is pulled
       values: |
         image:
           tag: 1.29.1
@@ -26,5 +24,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
       - ServerSideApply=true
