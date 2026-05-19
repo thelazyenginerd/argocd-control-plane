@@ -6,5 +6,6 @@ resources:
   - projects/bootstrap.yaml
   - projects/platform.yaml
   - minio.yaml
-  - stackgres.yaml
   - crossplane.yaml
+  - cloudnative-pg.yaml
+  - postgres-instance.yaml

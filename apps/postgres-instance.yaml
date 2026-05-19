@@ -1,25 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: storage
+  name: postgres-instance
   namespace: argocd
-
   annotations:
-    argocd.argoproj.io/sync-wave: "20"
-
+    argocd.argoproj.io/sync-wave: "40"
 spec:
   project: platform
-
   source:
     repoURL: https://github.com/thelazyenginerd/argocd-control-plane.git
-    targetRevision: main
-    path: infrastructure/storage
-
+    targetRevision: dev
+    path: infrastructure/postgres
   destination:
     server: https://kubernetes.default.svc
-    namespace: storage
-
+    namespace: databases
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - SkipDryRunOnMissingResource=true

@@ -6,8 +6,8 @@ install:
 	helm install $(release_name) argo/argo-cd \
 		--namespace $(namespace) \
 		--create-namespace \
-		--set controller.resources.limits.memory=1Gi \
-		--set repoServer.resources.limits.memory=512Mi \
+		--set controller.resources.limits.memory=2Gi \
+		--set repoServer.resources.limits.memory=2Gi \
 		--set server.service.type=NodePort \
 		--set global.logging.level=info \
 		--set controller.replicas=1 \
@@ -39,3 +39,11 @@ ui: getpw
 
 cat:
 	find . -path './.git' -prune -o -type f -exec sh -c 'for f do echo "--- $$f ---"; cat "$$f"; echo ""; done' _ {} +
+
+kind-up:
+	kind create cluster --config bootstrap/kind-config.yaml
+
+kind-down:
+	-kind delete cluster
+
+reset: kind-down kind-up install
